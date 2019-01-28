@@ -19,13 +19,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let vc = BestSellersViewController()
         vc.title = "BestSellers"
         let nav = UINavigationController.init(rootViewController: vc)
-        nav.title = "Bestsellers"
+        //nav.title = "Bestsellers"
         let tab = UITabBarController()
         let favVC = FavoritesViewController()
-        let settingsVC = SettingsViewController()
-        settingsVC.title = "Setting"
-        tab.viewControllers = [nav, favVC, settingsVC]
         favVC.title = "Favorites"
+        let settingsVC = SettingsViewController()
+        settingsVC.title = "Settings"
+        tab.viewControllers = [nav, favVC, settingsVC]
+        
         window = UIWindow.init(frame: UIScreen.main.bounds)
         window?.rootViewController = tab
         window?.makeKeyAndVisible()

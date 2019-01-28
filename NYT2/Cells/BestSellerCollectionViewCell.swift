@@ -53,10 +53,12 @@ class BestSellerCollectionViewCell: UICollectionViewCell {
     func setDescription() {
         addSubview(briefDescription)
         briefDescription.translatesAutoresizingMaskIntoConstraints = false
-        briefDescription.bottomAnchor.constraint(equalTo: bestSellerLabel.bottomAnchor).isActive = true
-        briefDescription.topAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        briefDescription.topAnchor.constraint(equalTo: bestSellerLabel.bottomAnchor).isActive = true
+        briefDescription.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
         briefDescription.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
-        briefDescription.trailingAnchor.constraint(equalTo:trailingAnchor).isActive = true
+   briefDescription.trailingAnchor.constraint(equalTo:trailingAnchor).isActive = true
+        briefDescription.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3).isActive = true
+//
         
         
     }
