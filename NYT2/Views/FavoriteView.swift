@@ -19,7 +19,7 @@ class FavoriteView: UIView {
         
         
         
-        let cv = UICollectionView.init(frame: CGRect.zero, collectionViewLayout: layout)
+        let cv = UICollectionView.init(frame: frame, collectionViewLayout: layout)
         cv.register(FavoriteCollectionViewCell.self, forCellWithReuseIdentifier: "Favorite")
         cv.backgroundColor = .white
         return cv
@@ -34,9 +34,9 @@ class FavoriteView: UIView {
         addSubview(favoriteCollection)
         favoriteCollection.translatesAutoresizingMaskIntoConstraints = false
         favoriteCollection.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
-        favoriteCollection.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 11).isActive = true
-        favoriteCollection.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -11).isActive = true
-        favoriteCollection.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor, multiplier: 0.6).isActive = true
+        favoriteCollection.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0).isActive = true
+        favoriteCollection.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0).isActive = true
+        favoriteCollection.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor, multiplier: 1).isActive = true
     }
     
     private func commonInit() {
