@@ -12,14 +12,18 @@ class FavoriteView: UIView {
 
     public lazy var favoriteCollection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize.init(width: 500, height: 500)
-        layout.sectionInset = UIEdgeInsets.init(top: 10, left: 10, bottom: 20, right: 10)
+        layout.itemSize = CGSize.init(width: 350, height: 700)
+        layout.sectionInset = UIEdgeInsets.init(top: 10, left: 20, bottom: 50, right: 20)
+        
         layout.scrollDirection = .vertical
+        
+        
         
         let cv = UICollectionView.init(frame: CGRect.zero, collectionViewLayout: layout)
         cv.register(FavoriteCollectionViewCell.self, forCellWithReuseIdentifier: "Favorite")
         cv.backgroundColor = .white
         return cv
+       
         
     }()
     

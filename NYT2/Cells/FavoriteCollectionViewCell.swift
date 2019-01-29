@@ -19,6 +19,8 @@ class FavoriteCollectionViewCell: UICollectionViewCell {
     public lazy var favoriteLabel: UILabel = {
         let label = UILabel()
         label.text =  "Days on the bestseller list"
+        label.isEnabled = true
+        label.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         return label
     }()
     
@@ -51,10 +53,21 @@ class FavoriteCollectionViewCell: UICollectionViewCell {
     }
     ////SET CONSTRAINTS/////
     func setupFavoriteLabel() {
-        
+        addSubview(favoriteLabel)
+    favoriteLabel.translatesAutoresizingMaskIntoConstraints = false
+        favoriteLabel.bottomAnchor.constraint(equalTo: favoriteImage.bottomAnchor).isActive = true
+        favoriteLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 11).isActive = true
+        favoriteLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -11).isActive = true
     }
     
     func setupFavoriteDescription(){
+        addSubview(favoriteDescription)
+        favoriteDescription.translatesAutoresizingMaskIntoConstraints = false
+        favoriteDescription.topAnchor.constraint(equalTo: favoriteLabel.bottomAnchor).isActive = true
+        favoriteDescription.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
+        favoriteDescription.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        favoriteDescription.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        favoriteDescription.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5).isActive = true
         
     }
     
@@ -76,5 +89,7 @@ class FavoriteCollectionViewCell: UICollectionViewCell {
     
     private func commonInit() {
         setFavoriteImage()
+        setupFavoriteLabel()
+        setupFavoriteDescription()
     }
 }

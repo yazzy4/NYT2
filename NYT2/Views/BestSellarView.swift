@@ -15,6 +15,7 @@ class BestSellerView: UIView {
         layout.itemSize = CGSize.init(width: 200, height: 300)
         layout.sectionInset = UIEdgeInsets.init(top: 20, left: 10, bottom: 20, right: 10)
         layout.scrollDirection = .horizontal
+    
         
         let cv = UICollectionView.init(frame: CGRect.zero, collectionViewLayout: layout)
         cv.register(BestSellerCollectionViewCell.self, forCellWithReuseIdentifier: "BestSeller")
