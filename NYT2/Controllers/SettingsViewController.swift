@@ -29,7 +29,7 @@ class SettingsViewController: UIViewController {
     }
     
     private func getCategories() {
-        NYTBookAPI.getBookCategories { (error, results) in
+        NYTBookAPIClient.getBookCategories { (error, results) in
             if let error = error {
                 print("Error:\(error)")
             } else if let results = results {

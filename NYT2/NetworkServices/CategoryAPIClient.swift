@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class NYTBookAPI {
+final class NYTBookAPIClient {
     private init() {}
     static func getBookCategories(completionHandler: @escaping (AppError?, [Results]?) -> Void) {
         

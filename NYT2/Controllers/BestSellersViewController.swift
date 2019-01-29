@@ -17,27 +17,38 @@ class BestSellersViewController: UIViewController {
             }
         }
     }
-    let bestSellerView = BestSellerView()
-    let detailsViewController = DetailViewController()
     
-  
+    public var bookInfo = [Books]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.bestSellerView.bestSellerCollection.reloadData()
+            }
+        }
+    }
+    
+   
+    
+    let bestSellerView = BestSellerView()
+    let labelView = BestSellerCollectionViewCell()
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
         view.addSubview(bestSellerView)
         getCategories()
+        setupCollectionView(genre: "Manga")
         bestSellerView.bestSellerCollection.dataSource = self
         bestSellerView.bestSellerCollection.delegate = self
         bestSellerView.bookPicker.dataSource = self
         bestSellerView.bookPicker.delegate = self
         
-         
-       
+        
     }
     
     private func getCategories() {
-        NYTBookAPI.getBookCategories { (error, results) in
+        NYTBookAPIClient.getBookCategories { (error, results) in
             if let error = error {
                 print("Error:\(error)")
             } else if let results = results {
@@ -45,20 +56,44 @@ class BestSellersViewController: UIViewController {
                 
             }
         }
+        
     }
+    
+
+    
+    private func setupCollectionView(genre: String) {
+        NYTBookAPIClient.bookResults(listName: genre) { (appError, bookNames) in
+            if let appError = appError {
+                print("App Error: \(appError)")
+            } else if let bookNames = bookNames {
+                self.bookInfo = bookNames
+                dump(self.bookInfo)
+            }
+            
+        }
+    }
+    
+   
+    private func getBookImage() {}
+    
     
 }
 
 extension BestSellersViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        
+        return bookInfo.count
+       
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BestSeller", for: indexPath) as? BestSellerCollectionViewCell else {
             return UICollectionViewCell() }
+        let currentBook = bookInfo[indexPath.row]
+        cell.bestSellerLabel.text = "\(currentBook.weeks_on_list) weeks on Bestseller's list"
+        cell.briefDescription.text = currentBook.book_details[0].description
         return cell
     }
-    
+
 }
 
 extension BestSellersViewController: UIPickerViewDataSource {
