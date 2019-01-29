@@ -8,6 +8,7 @@
 
 import UIKit
 
+//MAIN VIEW
 class BestSellerCollectionViewCell: UICollectionViewCell {
     
     

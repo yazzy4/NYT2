@@ -8,7 +8,11 @@
 
 import UIKit
 
+//MAIN VIEW
 class BestSellerView: UIView {
+    
+  
+
     
     public lazy var bestSellerCollection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -26,11 +30,11 @@ class BestSellerView: UIView {
     
     public lazy var bookPicker: UIPickerView = {
         let picker = UIPickerView()
-        picker.dataSource = self
-        picker.delegate = self
+        picker.backgroundColor = .green 
         return picker
     }()
     
+
     
     override init(frame: CGRect){
         super.init(frame: UIScreen.main.bounds)
@@ -46,17 +50,17 @@ class BestSellerView: UIView {
     }
     private func commonInit() {
         setupCollectionView()
+        
         setupPickerView()
     }
     
     private func setupCollectionView () {
         addSubview(bestSellerCollection)
-        
         bestSellerCollection.translatesAutoresizingMaskIntoConstraints = false
         bestSellerCollection.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
         bestSellerCollection.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         bestSellerCollection.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        bestSellerCollection.heightAnchor.constraint(equalTo:safeAreaLayoutGuide.heightAnchor, multiplier: 0.5).isActive = true
+bestSellerCollection.heightAnchor.constraint(equalTo:safeAreaLayoutGuide.heightAnchor, multiplier: 0.5).isActive = true
         
     }
     
@@ -66,28 +70,12 @@ class BestSellerView: UIView {
         bookPicker.topAnchor.constraint(equalTo: bestSellerCollection.bottomAnchor).isActive = true
         bookPicker.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         bookPicker.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        bookPicker.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
     
     
     
 }
-
-extension BestSellerView: UIPickerViewDataSource {
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 5
-    }
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-}
-
-extension BestSellerView: UIPickerViewDelegate {
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "Categories"
-    }
-}
-
 
 
 

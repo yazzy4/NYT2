@@ -12,8 +12,6 @@ class SettingsView: UIView {
 
     public lazy var settingsPicker: UIPickerView = {
         let picker = UIPickerView()
-        picker.dataSource = self
-        picker.delegate = self
         return picker
     }()
     
@@ -44,17 +42,5 @@ class SettingsView: UIView {
 
 }
 
-extension SettingsView : UIPickerViewDataSource, UIPickerViewDelegate {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-       return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-       return 5
-    }
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "Settings"
-    }
-    
-}
+
 

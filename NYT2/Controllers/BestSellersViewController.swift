@@ -7,17 +7,43 @@
 //
 
 import UIKit
-
+//sets up initial images -- MAINVIEW CONTROLLER
 class BestSellersViewController: UIViewController {
     
+    public var categories = [Results]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.bestSellerView.bookPicker.reloadAllComponents()
+            }
+        }
+    }
     let bestSellerView = BestSellerView()
+    let detailsViewController = DetailViewController()
+    
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
         view.addSubview(bestSellerView)
+        getCategories()
         bestSellerView.bestSellerCollection.dataSource = self
         bestSellerView.bestSellerCollection.delegate = self
+        bestSellerView.bookPicker.dataSource = self
+        bestSellerView.bookPicker.delegate = self
+        
+         
+       
+    }
+    
+    private func getCategories() {
+        NYTBookAPI.getBookCategories { (error, results) in
+            if let error = error {
+                print("Error:\(error)")
+            } else if let results = results {
+                self.categories = results
+            }
+        }
     }
     
 }
@@ -33,3 +59,22 @@ extension BestSellersViewController: UICollectionViewDataSource, UICollectionVie
     }
     
 }
+
+extension BestSellersViewController: UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return categories.count
+    }
+    
+ 
+}
+
+extension BestSellersViewController: UIPickerViewDelegate {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return categories[row].display_name
+    }
+}
+
