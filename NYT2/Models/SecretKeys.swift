@@ -9,5 +9,5 @@
 import Foundation
 
 class SecretKeys: Codable {
-    static let key = "WKz47jJvpVI0V768emgs2sQ760AAZuvV"//"pAtyMwNDmHtVrS6I"
+    static let key = "WKz47jJvpVI0V768emgs2sQ760AAZuvV"
 }

@@ -28,30 +28,27 @@ final class NYTBookAPI {
             }
         }
     }
+    static func bookResults(listName: String, completionHandler: @escaping (AppError?, [Books]?) -> Void) {
+
+        //listName use encoded
+        let endpointURLString = "https://api.nytimes.com/svc/books/v3/lists.json?api-key=\(SecretKeys.key)&list=\(listName)"
+
+        NetworkHelper.shared.performDataTask(endpointURLString: endpointURLString) { (appError, data) in
+            if let appError = appError {
+                completionHandler(appError, nil)
+            }
+            if let data = data {
+                do {
+                    let bookInfo = try JSONDecoder().decode(NYTBestellers.self, from: data)
+                    completionHandler(nil, bookInfo.results )
+                } catch {
+                    completionHandler(AppError.jsonDecodingError(error), nil)
+                }
+            }
+        }
+    }
 }
-//    static func bookResults(listName: String, completionHandler: @escaping (AppError?, [NYTBestellers]?) -> Void) {
-//
-//        //listName use encoded
-//        let endpointURLString = "https://api.nytimes.com/svc/books/v3/lists.json?api-key=\(SecretKeys.key)&list=\(listName)"
-//
-//        NetworkHelper.shared.performDataTask(endpointURLString: endpointURLString) { (appError, data) in
-//            if let appError = appError {
-//                completionHandler(appError, nil)
-//            }
-//            if let data = data {
-//                do {
-//                    let bookInfo = try JSONDecoder().decode(BookModel.self, from: data)
-//
-//                    completionHandler(nil, bookInfo.results)
-//                } catch {
-//                    completionHandler(AppError.jsonDecodingError(error), nil)
-//                }
-//            }
-//        }
-//    }
-//}
-//
-//
-//
-//
-//
+
+
+
+

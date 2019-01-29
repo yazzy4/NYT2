@@ -19,7 +19,7 @@ class SettingsView: UIView {
         addSubview(settingsPicker)
         settingsPicker.translatesAutoresizingMaskIntoConstraints = false
         settingsPicker.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
-        settingsPicker.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        settingsPicker.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
         settingsPicker.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         settingsPicker.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
     }

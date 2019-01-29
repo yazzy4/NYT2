@@ -42,6 +42,7 @@ class BestSellersViewController: UIViewController {
                 print("Error:\(error)")
             } else if let results = results {
                 self.categories = results
+                
             }
         }
     }
@@ -74,6 +75,7 @@ extension BestSellersViewController: UIPickerViewDataSource {
 
 extension BestSellersViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        self.categories.sorted(by: {$0.display_name > $1.display_name} )
         return categories[row].display_name
     }
 }

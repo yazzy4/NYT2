@@ -11,9 +11,6 @@ import UIKit
 //MAIN VIEW
 class BestSellerView: UIView {
     
-  
-
-    
     public lazy var bestSellerCollection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize.init(width: 200, height: 300)
@@ -30,7 +27,7 @@ class BestSellerView: UIView {
     
     public lazy var bookPicker: UIPickerView = {
         let picker = UIPickerView()
-        picker.backgroundColor = .green 
+        picker.backgroundColor = .green
         return picker
     }()
     
@@ -50,7 +47,6 @@ class BestSellerView: UIView {
     }
     private func commonInit() {
         setupCollectionView()
-        
         setupPickerView()
     }
     
