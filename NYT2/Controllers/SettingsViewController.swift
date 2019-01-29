@@ -10,10 +10,12 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
+    var settingsView = SettingsView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1)
-        
+        //self.view.backgroundColor = .white
+        view.addSubview(settingsView)
     }
     
     

@@ -10,12 +10,51 @@ import UIKit
 
 class SettingsView: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    public lazy var settingsPicker: UIPickerView = {
+        let picker = UIPickerView()
+        picker.dataSource = self
+        picker.delegate = self
+        return picker
+    }()
+    
+    func setupPickerView() {
+        addSubview(settingsPicker)
+        settingsPicker.translatesAutoresizingMaskIntoConstraints = false
+        settingsPicker.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
+        settingsPicker.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        settingsPicker.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        settingsPicker.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
     }
-    */
+    
+    override init(frame: CGRect){
+        super.init(frame: UIScreen.main.bounds)
+        self.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+        commonInit()
+        
+    }
+    
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        commonInit()
+    }
+    private func commonInit() {
+        setupPickerView()
+    }
 
 }
+
+extension SettingsView : UIPickerViewDataSource, UIPickerViewDelegate {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+       return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+       return 5
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return "Settings"
+    }
+    
+}
+
