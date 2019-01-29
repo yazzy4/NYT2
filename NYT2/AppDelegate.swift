@@ -19,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let vc = BestSellersViewController()
         vc.title = "BestSellers"
         let nav = UINavigationController.init(rootViewController: vc)
-        //nav.title = "Bestsellers"
         let tab = UITabBarController()
         let favVC = FavoritesViewController()
         favVC.title = "Favorites"

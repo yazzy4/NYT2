@@ -14,10 +14,10 @@ class FavoritesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
-        view.addSubview(favoriteView)
         self.title = "Favorites"
         favoriteView.favoriteCollection.dataSource = self
         favoriteView.favoriteCollection.delegate = self
+         view.addSubview(favoriteView)
     }
     
     

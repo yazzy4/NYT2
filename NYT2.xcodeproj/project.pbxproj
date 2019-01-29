@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		91DD5BBF21FFA8290084C081 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DD5BBE21FFA8290084C081 /* AppDelegate.swift */; };
-		91DD5BC121FFA8290084C081 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DD5BC021FFA8290084C081 /* ViewController.swift */; };
 		91DD5BC621FFA8290084C081 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91DD5BC521FFA8290084C081 /* Assets.xcassets */; };
 		91DD5BC921FFA82A0084C081 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91DD5BC721FFA8290084C081 /* LaunchScreen.storyboard */; };
 		91DD5BD121FFA84C0084C081 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DD5BD021FFA84C0084C081 /* AppError.swift */; };
@@ -33,7 +32,6 @@
 /* Begin PBXFileReference section */
 		91DD5BBB21FFA8280084C081 /* NYT2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NYT2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91DD5BBE21FFA8290084C081 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		91DD5BC021FFA8290084C081 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		91DD5BC521FFA8290084C081 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		91DD5BC821FFA8290084C081 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		91DD5BCA21FFA82A0084C081 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -93,7 +91,6 @@
 				91DD5BF221FFABB30084C081 /* Cells */,
 				91DD5BF121FFABA00084C081 /* Views */,
 				91DD5BBE21FFA8290084C081 /* AppDelegate.swift */,
-				91DD5BC021FFA8290084C081 /* ViewController.swift */,
 				91DD5BC521FFA8290084C081 /* Assets.xcassets */,
 				91DD5BC721FFA8290084C081 /* LaunchScreen.storyboard */,
 				91DD5BCA21FFA82A0084C081 /* Info.plist */,
@@ -238,7 +235,6 @@
 				91DD5BEF21FFAAAD0084C081 /* Categories.swift in Sources */,
 				91DD5BEB21FFAA750084C081 /* Books.swift in Sources */,
 				91DD5BD521FFA86C0084C081 /* ImageHelper.swift in Sources */,
-				91DD5BC121FFA8290084C081 /* ViewController.swift in Sources */,
 				91DD5BE121FFA99D0084C081 /* FavoritesViewController.swift in Sources */,
 				91DD5BD721FFA8DC0084C081 /* BestSellerCollectionViewCell.swift in Sources */,
 				91DD5BE921FFAA5C0084C081 /* Date+Extensions.swift in Sources */,
