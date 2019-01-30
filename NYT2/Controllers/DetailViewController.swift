@@ -10,15 +10,16 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
-    var detailsView = DetailView()
+    var detailView = DetailView()
     
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(detailsView)
+        view.addSubview(detailView)
         
     }
+    
+    
     
 
     
