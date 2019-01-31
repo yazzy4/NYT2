@@ -10,7 +10,7 @@ import UIKit
 //sets up initial images -- MAINVIEW CONTROLLER
 class BestSellersViewController: UIViewController {
     
-    public var categories = [Results]() {
+    public var bookGenre = [Results]() {
         didSet {
             DispatchQueue.main.async {
                 self.bestSellerView.bookPicker.reloadAllComponents()
@@ -26,25 +26,25 @@ class BestSellersViewController: UIViewController {
         }
     }
     
-   
-    
     let bestSellerView = BestSellerView()
-    let labelView = BestSellerCollectionViewCell()
     
-
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
         view.addSubview(bestSellerView)
         getCategories()
-        setupCollectionView(genre: "Manga")
+        setupBooks(genre: "Manga")
         bestSellerView.bestSellerCollection.dataSource = self
         bestSellerView.bestSellerCollection.delegate = self
         bestSellerView.bookPicker.dataSource = self
         bestSellerView.bookPicker.delegate = self
-        
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        userDefaultSettings()
     }
     
     private func getCategories() {
@@ -52,29 +52,38 @@ class BestSellersViewController: UIViewController {
             if let error = error {
                 print("Error:\(error)")
             } else if let results = results {
-                self.categories = results
+                self.bookGenre = results
                 
             }
         }
         
     }
     
-
-    
-    private func setupCollectionView(genre: String) {
+    public func setupBooks(genre: String) {
         NYTBookAPIClient.bookResults(listName: genre) { (appError, bookNames) in
             if let appError = appError {
                 print("App Error: \(appError)")
             } else if let bookNames = bookNames {
                 self.bookInfo = bookNames
-                dump(self.bookInfo)
+                
             }
             
         }
     }
     
+    func userDefaultSettings() {
+        if let userDefault: String = UserDefaults.standard.object(forKey: NYTSecretKeys.nytKey) as? String {
+            setupBooks(genre: userDefault.replacingOccurrences(of: " ", with: "-"))
+            if let selectionRow = (UserDefaults.standard.object(forKey: DefaultGenre.pickerRow) as? String) {
+                DispatchQueue.main.async {
+                    self.bestSellerView.bookPicker.selectRow(Int(selectionRow)!, inComponent: 0, animated: true)
+                }
+            }
+        }
+    }
+
    
-    private func getBookImage() {}
+    
     
     
 }
@@ -102,16 +111,19 @@ extension BestSellersViewController: UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return categories.count
+        return bookGenre.count
     }
+    
     
  
 }
 
 extension BestSellersViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        self.categories.sorted(by: {$0.display_name > $1.display_name} )
-        return categories[row].display_name
+        return bookGenre[row].list_name
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        setupBooks(genre: bookGenre[row].list_name.replacingOccurrences(of: " ", with: "-"))
     }
 }
 

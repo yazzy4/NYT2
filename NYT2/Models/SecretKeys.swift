@@ -11,3 +11,7 @@ import Foundation
 class SecretKeys: Codable {
     static let key = "WKz47jJvpVI0V768emgs2sQ760AAZuvV"
 }
+struct DefaultGenre {
+    static var defaultGenre = "Default Genre"
+    static var pickerRow = "Selection Row"
+}

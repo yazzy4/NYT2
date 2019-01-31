@@ -12,6 +12,7 @@
 		912527632200C92E0037CFEF /* CategoryAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912527622200C92E0037CFEF /* CategoryAPIClient.swift */; };
 		912527652200C9BA0037CFEF /* SecretKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912527642200C9BA0037CFEF /* SecretKeys.swift */; };
 		912527672200F8EE0037CFEF /* GoogleBooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912527662200F8EE0037CFEF /* GoogleBooks.swift */; };
+		912527C122026C570037CFEF /* NYTSecretKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912527C022026C570037CFEF /* NYTSecretKeys.swift */; };
 		91DD5BBF21FFA8290084C081 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DD5BBE21FFA8290084C081 /* AppDelegate.swift */; };
 		91DD5BC621FFA8290084C081 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91DD5BC521FFA8290084C081 /* Assets.xcassets */; };
 		91DD5BC921FFA82A0084C081 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91DD5BC721FFA8290084C081 /* LaunchScreen.storyboard */; };
@@ -39,6 +40,7 @@
 		912527622200C92E0037CFEF /* CategoryAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAPIClient.swift; sourceTree = "<group>"; };
 		912527642200C9BA0037CFEF /* SecretKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretKeys.swift; sourceTree = "<group>"; };
 		912527662200F8EE0037CFEF /* GoogleBooks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GoogleBooks.swift; path = ../Views/GoogleBooks.swift; sourceTree = "<group>"; };
+		912527C022026C570037CFEF /* NYTSecretKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYTSecretKeys.swift; sourceTree = "<group>"; };
 		91DD5BBB21FFA8280084C081 /* NYT2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NYT2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91DD5BBE21FFA8290084C081 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91DD5BC521FFA8290084C081 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 		91DD5BF321FFABC90084C081 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				912527C022026C570037CFEF /* NYTSecretKeys.swift */,
 				912527642200C9BA0037CFEF /* SecretKeys.swift */,
 				91DD5BEA21FFAA750084C081 /* NYTBestellers.swift */,
 				91DD5BEC21FFAA960084C081 /* Category.swift */,
@@ -260,6 +263,7 @@
 				91DD5BE721FFAA250084C081 /* String+DateExtensions.swift in Sources */,
 				91DD5BE321FFA9C10084C081 /* SettingsViewController.swift in Sources */,
 				91DD5BF721FFB2160084C081 /* FavoriteCollectionViewCell.swift in Sources */,
+				912527C122026C570037CFEF /* NYTSecretKeys.swift in Sources */,
 				912527652200C9BA0037CFEF /* SecretKeys.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

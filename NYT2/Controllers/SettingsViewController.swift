@@ -23,23 +23,20 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(settingsView)
-        getCategories()
+        
         settingsView.settingsPicker.dataSource = self
         settingsView.settingsPicker.delegate = self
     }
     
-    private func getCategories() {
-        NYTBookAPIClient.getBookCategories { (error, results) in
-            if let error = error {
-                print("Error:\(error)")
-            } else if let results = results {
-                self.settingsResults = results
-                
-            }
+    
+
+    func userDefaultSettings() {
+        NYTBookAPIClient.getBookCategories { (appError, results) in
+            if let appError = appError {
+                print("No categories bruh")
+            } 
         }
     }
-
-    
     
     
 }
