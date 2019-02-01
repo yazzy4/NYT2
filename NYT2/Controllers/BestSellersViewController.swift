@@ -26,6 +26,15 @@ class BestSellersViewController: UIViewController {
         }
     }
     
+   public var bookDetail = [BookDetail]() {
+        didSet{
+            DispatchQueue.main.async {
+                self.bestSellerView.bestSellerCollection.reloadData()
+            }
+        }
+    }
+    
+    
     let bestSellerView = BestSellerView()
     
     
@@ -100,10 +109,41 @@ extension BestSellersViewController: UICollectionViewDataSource, UICollectionVie
         let currentBook = bookInfo[indexPath.row]
         cell.bestSellerLabel.text = "\(currentBook.weeks_on_list) weeks on Bestseller's list"
         cell.briefDescription.text = currentBook.book_details[0].description
+        GoogleAPIClient.getImage(keyword: currentBook.book_details[0].primary_isbn13) { (error, image) in
+            if let _ = error {
+                DispatchQueue.main.async {
+                    cell.bookImage.image = UIImage(named: "book")
+                }
+            } else if let data = image {
+                ImageHelper.fetchImageFromNetwork(urlString: data[0].volumeInfo.imageLinks.smallThumbnail, completion: { (error, smallThumby) in
+                    if let error = error {
+                        print("Thumby smalls image error:\(error) ")
+                    } else if let smallThumby = smallThumby {
+                        DispatchQueue.main.async {
+                            cell.bookImage.image = smallThumby
+                            cell.briefDescription.text = data[0].volumeInfo.description
+                            }
+                        }
+                    })
+                }
+            }
         return cell
+        }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let chosenCell = collectionView.cellForItem(at: indexPath) as? BestSellerCollectionViewCell else {return}
+        let book = bookInfo[indexPath.row]
+        let detailVC = DetailViewController()
+        detailVC.bookDetail = book.book_details[0]
+        detailVC.detailView.detailImage.image = chosenCell.bookImage.image
+        detailVC.detailView.detailDescription.text = chosenCell.briefDescription.text
+        detailVC.detailView.detailLabel.text = book.book_details.first?.author
+        navigationController?.pushViewController(detailVC, animated: true)
     }
-
+    
 }
+
+
 
 extension BestSellersViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

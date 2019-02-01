@@ -18,6 +18,7 @@ class DetailView: UIView {
     public lazy var detailLabel: UILabel = {
         let label = UILabel()
         label.isEnabled = true
+        label.textAlignment = .center
         return label
     }()
     public lazy var detailDescription: UITextView = {

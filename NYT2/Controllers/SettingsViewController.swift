@@ -11,6 +11,7 @@ import UIKit
 class SettingsViewController: UIViewController {
     
     var settingsView = SettingsView()
+    
     public var settingsResults = [Results](){
         didSet {
             DispatchQueue.main.async {
@@ -23,7 +24,7 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(settingsView)
-        
+        userDefaultSettings()
         settingsView.settingsPicker.dataSource = self
         settingsView.settingsPicker.delegate = self
     }
@@ -33,8 +34,15 @@ class SettingsViewController: UIViewController {
     func userDefaultSettings() {
         NYTBookAPIClient.getBookCategories { (appError, results) in
             if let appError = appError {
-                print("No categories bruh")
-            } 
+                print("No categories bruh \(appError)")
+            } else if let results = results {
+                self.settingsResults = results
+                if let selectionRow = (UserDefaults.standard.object(forKey: DefaultGenre.pickerRow) as? String) {
+                    DispatchQueue.main.async {
+                        self.settingsView.settingsPicker.selectRow(Int(selectionRow)!, inComponent: 0, animated: true)
+                    }
+                }
+            }
         }
     }
     
@@ -57,7 +65,11 @@ extension SettingsViewController: UIPickerViewDataSource {
 extension SettingsViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
  
-        return settingsResults[row].display_name
+        return settingsResults[row].list_name
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+       
+         
     }
 }
 

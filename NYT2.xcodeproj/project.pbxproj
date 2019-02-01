@@ -9,10 +9,12 @@
 /* Begin PBXBuildFile section */
 		9125275F2200B4EA0037CFEF /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9125275E2200B4EA0037CFEF /* DetailViewController.swift */; };
 		912527612200B54D0037CFEF /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912527602200B54D0037CFEF /* DetailView.swift */; };
-		912527632200C92E0037CFEF /* CategoryAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912527622200C92E0037CFEF /* CategoryAPIClient.swift */; };
+		912527632200C92E0037CFEF /* NYTAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912527622200C92E0037CFEF /* NYTAPIClient.swift */; };
 		912527652200C9BA0037CFEF /* SecretKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912527642200C9BA0037CFEF /* SecretKeys.swift */; };
 		912527672200F8EE0037CFEF /* GoogleBooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912527662200F8EE0037CFEF /* GoogleBooks.swift */; };
 		912527C122026C570037CFEF /* NYTSecretKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912527C022026C570037CFEF /* NYTSecretKeys.swift */; };
+		912527C3220395F40037CFEF /* GoogleAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912527C2220395F40037CFEF /* GoogleAPIClient.swift */; };
+		912527C52203975E0037CFEF /* GoogleSecretKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912527C42203975E0037CFEF /* GoogleSecretKeys.swift */; };
 		91DD5BBF21FFA8290084C081 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DD5BBE21FFA8290084C081 /* AppDelegate.swift */; };
 		91DD5BC621FFA8290084C081 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91DD5BC521FFA8290084C081 /* Assets.xcassets */; };
 		91DD5BC921FFA82A0084C081 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91DD5BC721FFA8290084C081 /* LaunchScreen.storyboard */; };
@@ -37,10 +39,12 @@
 /* Begin PBXFileReference section */
 		9125275E2200B4EA0037CFEF /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		912527602200B54D0037CFEF /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
-		912527622200C92E0037CFEF /* CategoryAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAPIClient.swift; sourceTree = "<group>"; };
+		912527622200C92E0037CFEF /* NYTAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYTAPIClient.swift; sourceTree = "<group>"; };
 		912527642200C9BA0037CFEF /* SecretKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretKeys.swift; sourceTree = "<group>"; };
 		912527662200F8EE0037CFEF /* GoogleBooks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GoogleBooks.swift; path = ../Views/GoogleBooks.swift; sourceTree = "<group>"; };
 		912527C022026C570037CFEF /* NYTSecretKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYTSecretKeys.swift; sourceTree = "<group>"; };
+		912527C2220395F40037CFEF /* GoogleAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAPIClient.swift; sourceTree = "<group>"; };
+		912527C42203975E0037CFEF /* GoogleSecretKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSecretKeys.swift; sourceTree = "<group>"; };
 		91DD5BBB21FFA8280084C081 /* NYT2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NYT2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91DD5BBE21FFA8290084C081 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91DD5BC521FFA8290084C081 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -114,7 +118,8 @@
 				91DD5BD421FFA86C0084C081 /* ImageHelper.swift */,
 				91DD5BD021FFA84C0084C081 /* AppError.swift */,
 				91DD5BD221FFA85E0084C081 /* NetworkHelper.swift */,
-				912527622200C92E0037CFEF /* CategoryAPIClient.swift */,
+				912527622200C92E0037CFEF /* NYTAPIClient.swift */,
+				912527C2220395F40037CFEF /* GoogleAPIClient.swift */,
 			);
 			path = NetworkServices;
 			sourceTree = "<group>";
@@ -143,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				912527C022026C570037CFEF /* NYTSecretKeys.swift */,
+				912527C42203975E0037CFEF /* GoogleSecretKeys.swift */,
 				912527642200C9BA0037CFEF /* SecretKeys.swift */,
 				91DD5BEA21FFAA750084C081 /* NYTBestellers.swift */,
 				91DD5BEC21FFAA960084C081 /* Category.swift */,
@@ -250,12 +256,14 @@
 				91DD5BDD21FFA94C0084C081 /* SettingsView.swift in Sources */,
 				91DD5BEB21FFAA750084C081 /* NYTBestellers.swift in Sources */,
 				91DD5BD521FFA86C0084C081 /* ImageHelper.swift in Sources */,
-				912527632200C92E0037CFEF /* CategoryAPIClient.swift in Sources */,
+				912527632200C92E0037CFEF /* NYTAPIClient.swift in Sources */,
 				91DD5BE121FFA99D0084C081 /* FavoritesViewController.swift in Sources */,
+				912527C52203975E0037CFEF /* GoogleSecretKeys.swift in Sources */,
 				91DD5BD721FFA8DC0084C081 /* BestSellerCollectionViewCell.swift in Sources */,
 				9125275F2200B4EA0037CFEF /* DetailViewController.swift in Sources */,
 				91DD5BE921FFAA5C0084C081 /* Date+Extensions.swift in Sources */,
 				91DD5BDF21FFA9710084C081 /* BestSellersViewController.swift in Sources */,
+				912527C3220395F40037CFEF /* GoogleAPIClient.swift in Sources */,
 				912527612200B54D0037CFEF /* DetailView.swift in Sources */,
 				91DD5BBF21FFA8290084C081 /* AppDelegate.swift in Sources */,
 				91DD5BE521FFAA000084C081 /* DataPersistenceManager.swift in Sources */,
