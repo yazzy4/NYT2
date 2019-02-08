@@ -25,8 +25,8 @@ class FavoriteCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    public lazy var favoriteDescription: UITextField = {
-        let text = UITextField()
+    public lazy var favoriteDescription: UITextView = {
+        let text = UITextView()
         text.text = "Favorite blurb"
         return text
     }()
@@ -34,15 +34,12 @@ class FavoriteCollectionViewCell: UICollectionViewCell {
     public lazy var alertButton: UIButton = {
         let button = UIButton()
         button.setTitle(". . .", for: .normal)
-        button.addTarget(self, action: #selector(alertButtonPressed), for: .touchUpInside)
         return button
     }()
     
-    @objc func alertButtonPressed() {
+ 
 
-    }
 
-////NEEDS WORK/////
     func setFavoriteImage(){
         addSubview(favoriteImage)
         favoriteImage.translatesAutoresizingMaskIntoConstraints = false
@@ -52,7 +49,7 @@ class FavoriteCollectionViewCell: UICollectionViewCell {
         favoriteImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.6).isActive = true
         
     }
-    ////SET CONSTRAINTS/////
+
     func setupFavoriteLabel() {
         addSubview(favoriteLabel)
     favoriteLabel.translatesAutoresizingMaskIntoConstraints = false

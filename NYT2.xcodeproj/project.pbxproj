@@ -157,7 +157,6 @@
 				91DD5BEA21FFAA750084C081 /* NYTBestellers.swift */,
 				91DD5BEC21FFAA960084C081 /* Category.swift */,
 				912527662200F8EE0037CFEF /* GoogleBooks.swift */,
-				91582466220E305800107331 /* FavoritesModel.swift */,
 				91582464220E302F00107331 /* FavoriteBooks.swift */,
 			);
 			path = Models;
@@ -180,6 +179,7 @@
 				91DD5BE421FFAA000084C081 /* DataPersistenceManager.swift */,
 				91DD5BE621FFAA250084C081 /* String+DateExtensions.swift */,
 				91DD5BE821FFAA5C0084C081 /* Date+Extensions.swift */,
+				91582466220E305800107331 /* FavoritesModel.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";

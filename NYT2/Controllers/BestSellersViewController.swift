@@ -8,6 +8,7 @@
 
 import UIKit
 //sets up initial images -- MAINVIEW CONTROLLER
+
 class BestSellersViewController: UIViewController {
     
     public var bookGenre = [Results]() {

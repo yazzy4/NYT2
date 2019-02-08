@@ -11,7 +11,7 @@ class FavoritesViewController: UIViewController {
     
     var favoriteView = FavoriteView()
     
-    public var favoriteBooks = [Books]() {
+    public var favoriteBooks = [FavoriteBooks]() {
         didSet{
             DispatchQueue.main.async {
                 self.favoriteView.reloadInputViews()
@@ -29,28 +29,40 @@ class FavoritesViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        getFavoriteBook()
+        favoriteBooks = FavoriteModel.getBooks()
+        favoriteView.favoriteCollection.reloadData()
+    
     }
     
-    func getFavoriteBook() {
-      
-    }
+   
+
     
     
 }
 
 extension FavoritesViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        print(favoriteBooks.count)
+        return favoriteBooks.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FavoriteCell", for: indexPath) as? FavoriteCollectionViewCell else {
             return UICollectionViewCell()}
-            return cell
-
-            }
-        }
+        let currentFav = favoriteBooks[indexPath.row]
+        cell.favoriteImage.image = UIImage(data: currentFav.imageData)
+        cell.favoriteLabel.text = currentFav.author
+        cell.favoriteDescription.text = currentFav.description
+        cell.alertButton.tag = indexPath.row
+        cell.alertButton.addTarget(self, action: #selector(deleteButtonPressed), for: .touchUpInside)
+        
+        return cell
+    }
+    
+    @objc func deleteButtonPressed(sender: UIButton){
+        FavoriteModel.deleteBook(index: sender.tag)
+    }
+}
     
     
 

@@ -12,25 +12,28 @@ class DetailViewController: UIViewController {
     
     public var detailView = DetailView()
     public var bookDetail: BookDetail?
+//    public var favoriteBookSaved = [FavoriteBooks]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(detailView)
         view.backgroundColor = #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1)
         navigationItem.title = bookDetail?.title
+        let _ = FavoriteModel.getBooks()
         navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Favorite", style: .plain, target: self, action: #selector(favoriteButtonPressed))
     }
     
     @objc func favoriteButtonPressed() {
         guard let book = saveBook() else {return}
         FavoriteModel.appendBook(favorite: book)
+        print("added to favorites")
     }
     
     private func saveBook()-> FavoriteBooks? {
         guard let image = detailView.detailImage.image,
             let author = detailView.detailLabel.text,
             let description = detailView.detailTextView.text else {return nil}
-        guard let title =  title else {return nil}
+        guard let title =  bookDetail?.title else {return nil}
         let date = Date()
         let formatter = DateFormatter()
         formatter.dateStyle = DateFormatter.Style.long
