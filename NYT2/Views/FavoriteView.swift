@@ -34,16 +34,19 @@ class FavoriteView: UIView {
     }
     
     private func commonInit() {
+        self.favoriteCollection.register(FavoriteCollectionViewCell.self, forCellWithReuseIdentifier: "FavoriteCell")
         setupCellView()
     }
     
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
+        
         commonInit()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        
         commonInit()
     }
     

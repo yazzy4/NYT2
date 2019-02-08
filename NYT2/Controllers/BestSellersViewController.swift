@@ -136,7 +136,7 @@ extension BestSellersViewController: UICollectionViewDataSource, UICollectionVie
         let detailVC = DetailViewController()
         detailVC.bookDetail = book.book_details[0]
         detailVC.detailView.detailImage.image = chosenCell.bookImage.image
-        detailVC.detailView.detailDescription.text = chosenCell.briefDescription.text
+        detailVC.detailView.detailTextView.text = chosenCell.briefDescription.text
         detailVC.detailView.detailLabel.text = book.book_details.first?.author
         navigationController?.pushViewController(detailVC, animated: true)
     }

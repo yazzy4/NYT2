@@ -10,8 +10,9 @@ import UIKit
 
 class DetailView: UIView {
     public lazy var detailImage: UIImageView = {
-        let image = UIImageView(image: UIImage(named: ""))
+        let image = UIImageView(image: UIImage(named: "magicIcon"))
         image.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
+        image.contentMode = .scaleAspectFit
         return image
     }()
     
@@ -19,46 +20,18 @@ class DetailView: UIView {
         let label = UILabel()
         label.isEnabled = true
         label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 20)
         return label
     }()
-    public lazy var detailDescription: UITextView = {
+    public lazy var detailTextView: UITextView = {
         let description = UITextView()
         return description
     }()
     
-    private func setDetailImage() {
-        addSubview(detailImage)
-        detailImage.translatesAutoresizingMaskIntoConstraints = false
-        detailImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
-        detailImage.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        detailImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 11).isActive = true
-        detailImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -11).isActive = true
-        detailImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4).isActive = true
-    }
-    
-    private func setDetailLabel () {
-        addSubview(detailLabel)
-        detailLabel.translatesAutoresizingMaskIntoConstraints = false
-        detailLabel.topAnchor.constraint(equalTo: detailImage.bottomAnchor).isActive = true
-        detailLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        detailLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        detailLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        
-    }
-    
-    private func setDetailDescription() {
-        addSubview(detailDescription)
-        detailDescription.translatesAutoresizingMaskIntoConstraints = false
-        detailDescription.topAnchor.constraint(equalTo: detailLabel.bottomAnchor).isActive = true
-        detailDescription.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
-        detailDescription.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        detailDescription.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        detailDescription.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4).isActive = true
-    
-    }
+
     
     override init(frame: CGRect) {
-        super.init(frame:frame)
+        super.init(frame: UIScreen.main.bounds)
         self.backgroundColor = #colorLiteral(red: 0.5741485357, green: 0.5741624236, blue: 0.574154973, alpha: 1)
         commonInit()
     }
@@ -73,6 +46,36 @@ class DetailView: UIView {
         setDetailLabel()
         setDetailDescription()
     }
+    
+    private func setDetailImage() {
+        addSubview(detailImage)
+        detailImage.translatesAutoresizingMaskIntoConstraints = false
+        detailImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 25).isActive = true
+        detailImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 11).isActive = true
+        detailImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -11).isActive = true
+        detailImage.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor, multiplier: 0.5).isActive = true
+    }
+    
+    private func setDetailLabel () {
+        addSubview(detailLabel)
+        detailLabel.translatesAutoresizingMaskIntoConstraints = false
+        detailLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 11).isActive = true
+        detailLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -11).isActive = true
+        detailLabel.topAnchor.constraint(equalTo: detailImage.bottomAnchor, constant: 11).isActive = true
+        
+    }
+    
+    private func setDetailDescription() {
+        addSubview(detailTextView)
+        detailTextView.translatesAutoresizingMaskIntoConstraints = false
+        detailTextView.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: 55).isActive = true
+        detailTextView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
+        detailTextView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        detailTextView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+    
+    }
+    
+    
     
     
 

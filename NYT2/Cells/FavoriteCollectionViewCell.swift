@@ -20,6 +20,7 @@ class FavoriteCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.text =  "Days on the bestseller list"
         label.isEnabled = true
+        label.font = UIFont.boldSystemFont(ofSize: 20)
         label.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         return label
     }()
