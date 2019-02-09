@@ -11,7 +11,7 @@ import UIKit
 class SettingsViewController: UIViewController {
     
     var settingsView = SettingsView()
-    
+    var defaultCategory = "Manga"
     public var settingsResults = [Results](){
         didSet {
             DispatchQueue.main.async {
@@ -20,13 +20,14 @@ class SettingsViewController: UIViewController {
         }
     }
     
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(settingsView)
-        userDefaultSettings()
+        
         settingsView.settingsPicker.dataSource = self
         settingsView.settingsPicker.delegate = self
+        userDefaultSettings()
     }
     
     
@@ -37,10 +38,13 @@ class SettingsViewController: UIViewController {
                 print("No categories bruh \(appError)")
             } else if let results = results {
                 self.settingsResults = results
-                if let selectionRow = (UserDefaults.standard.object(forKey: DefaultGenre.pickerRow) as? String) {
-                    DispatchQueue.main.async {
-                        self.settingsView.settingsPicker.selectRow(Int(selectionRow)!, inComponent: 0, animated: true)
-                    }
+                if let categoryName = (UserDefaults.standard.object(forKey: DefaultGenre.pickerRow) as? String) {
+                    let rowNum = self.settingsResults.firstIndex { $0.list_name_encoded == categoryName }
+                    if let _ = rowNum {
+                        DispatchQueue.main.async {
+                            self.settingsView.settingsPicker.selectRow(rowNum!, inComponent: 0, animated: true)
+                        }
+                    } 
                 }
             }
         }
@@ -68,8 +72,8 @@ extension SettingsViewController: UIPickerViewDelegate {
         return settingsResults[row].list_name
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-       
-         
+        let categoryName = settingsResults[row].list_name_encoded
+        UserDefaults.standard.set(categoryName, forKey: DefaultGenre.pickerRow)
     }
 }
 

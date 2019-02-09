@@ -14,6 +14,7 @@ struct Category: Codable {
 struct Results: Codable {
     let list_name: String
     let display_name: String
+    let list_name_encoded: String
     let oldest_published_date: String
     let newest_published_date: String
     let updated: String

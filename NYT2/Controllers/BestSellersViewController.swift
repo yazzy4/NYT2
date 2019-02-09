@@ -82,11 +82,26 @@ class BestSellersViewController: UIViewController {
     }
     
     func userDefaultSettings() {
-        if let userDefault: String = UserDefaults.standard.object(forKey: NYTSecretKeys.nytKey) as? String {
-            setupBooks(genre: userDefault.replacingOccurrences(of: " ", with: "-"))
-            if let selectionRow = (UserDefaults.standard.object(forKey: DefaultGenre.pickerRow) as? String) {
-                DispatchQueue.main.async {
-                    self.bestSellerView.bookPicker.selectRow(Int(selectionRow)!, inComponent: 0, animated: true)
+//        if let userDefault: String = UserDefaults.standard.object(forKey: NYTSecretKeys.nytKey) as? String {
+//            // setupBooks(genre: userDefault.replacingOccurrences(of: " ", with: "-"))
+//            if let selectionRow = (UserDefaults.standard.object(forKey: DefaultGenre.pickerRow) as? String) {
+//                DispatchQueue.main.async {
+//                    self.bestSellerView.bookPicker.selectRow(Int(selectionRow)!, inComponent: 0, animated: true)
+//                }
+//            }
+//        }
+        NYTBookAPIClient.getBookCategories { (appError, results) in
+            if let appError = appError {
+                print("No categories bruh \(appError)")
+            } else if let results = results {
+                self.bookGenre = results
+                if let categoryName = (UserDefaults.standard.object(forKey: DefaultGenre.pickerRow) as? String) {
+                    let rowNum = self.bookGenre.firstIndex { $0.list_name_encoded == categoryName }
+                    if let _ = rowNum {
+                        DispatchQueue.main.async {
+                            self.bestSellerView.bookPicker.selectRow(rowNum!, inComponent: 0, animated: true)
+                        }
+                    }
                 }
             }
         }

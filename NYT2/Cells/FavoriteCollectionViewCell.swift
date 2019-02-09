@@ -13,6 +13,7 @@ class FavoriteCollectionViewCell: UICollectionViewCell {
     public lazy var favoriteImage: UIImageView = {
         let image = UIImageView(image: UIImage(named: "blueRaspberry"))
         image.backgroundColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
+        image.contentMode = .scaleAspectFit
         return image
     }()
     
@@ -38,22 +39,19 @@ class FavoriteCollectionViewCell: UICollectionViewCell {
     }()
     
  
-
-
     func setFavoriteImage(){
         addSubview(favoriteImage)
         favoriteImage.translatesAutoresizingMaskIntoConstraints = false
         favoriteImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
-        favoriteImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 11).isActive = true
-        favoriteImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -11).isActive = true
-        favoriteImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.6).isActive = true
-        
+        favoriteImage.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        favoriteImage.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.7).isActive = true
+        favoriteImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5).isActive = true
     }
 
     func setupFavoriteLabel() {
         addSubview(favoriteLabel)
     favoriteLabel.translatesAutoresizingMaskIntoConstraints = false
-        favoriteLabel.bottomAnchor.constraint(equalTo: favoriteImage.bottomAnchor).isActive = true
+        favoriteLabel.bottomAnchor.constraint(equalTo: favoriteImage.bottomAnchor, constant: 40).isActive = true
         favoriteLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 11).isActive = true
         favoriteLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -11).isActive = true
     }
@@ -61,15 +59,20 @@ class FavoriteCollectionViewCell: UICollectionViewCell {
     func setupFavoriteDescription(){
         addSubview(favoriteDescription)
         favoriteDescription.translatesAutoresizingMaskIntoConstraints = false
-        favoriteDescription.topAnchor.constraint(equalTo: favoriteLabel.bottomAnchor).isActive = true
+        favoriteDescription.topAnchor.constraint(equalTo: favoriteLabel.bottomAnchor, constant: 10).isActive = true
         favoriteDescription.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
         favoriteDescription.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         favoriteDescription.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        favoriteDescription.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5).isActive = true
+
         
     }
     
+    
     func setupAlert() {
+        addSubview(alertButton)
+        alertButton.translatesAutoresizingMaskIntoConstraints = false
+        alertButton.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
+        alertButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -11).isActive = true
         
     }
     
@@ -89,5 +92,6 @@ class FavoriteCollectionViewCell: UICollectionViewCell {
         setFavoriteImage()
         setupFavoriteLabel()
         setupFavoriteDescription()
+        setupAlert()
     }
 }

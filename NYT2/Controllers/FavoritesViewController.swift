@@ -14,7 +14,7 @@ class FavoritesViewController: UIViewController {
     public var favoriteBooks = [FavoriteBooks]() {
         didSet{
             DispatchQueue.main.async {
-                self.favoriteView.reloadInputViews()
+                self.favoriteView.favoriteCollection.reloadData()
             }
         }
     }
@@ -30,8 +30,6 @@ class FavoritesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         favoriteBooks = FavoriteModel.getBooks()
-        favoriteView.favoriteCollection.reloadData()
-    
     }
     
    
@@ -60,8 +58,27 @@ extension FavoritesViewController: UICollectionViewDataSource, UICollectionViewD
     }
     
     @objc func deleteButtonPressed(sender: UIButton){
-        FavoriteModel.deleteBook(index: sender.tag)
+        // create action sheet
+        let actionSheet = UIAlertController(title: "nil", message: "message", preferredStyle: .actionSheet)
+        // create delete option
+        let delete = UIAlertAction(title: "Delete", style: .destructive) { (action) in
+            FavoriteModel.deleteBook(index: sender.tag)
+            self.favoriteBooks = FavoriteModel.getBooks()
+        }
+        // create cancel option
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        // add delete & cancel to action sheet
+        actionSheet.addAction(delete)
+        actionSheet.addAction(cancel)
+        //present action sheet
+        present(actionSheet, animated: true, completion: nil)
+        
+      
     }
+    
+    
+    
+    
 }
     
     
